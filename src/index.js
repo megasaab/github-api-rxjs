@@ -15,13 +15,12 @@ const result = document.getElementById('result')
             filter(value => value.trim()),
             switchMap(value => ajax.getJSON(url + value).pipe(
                 catchError(error => EMPTY)
-            )), //takes higher value
+            )), 
             map(response => response.items),
-            mergeMap(items => items)
+            mergeMap(items => items) 
         )
 
     stream$.subscribe(user => {
-        console.log(user)
         const html = ` <div class="card">
                 <div class="card-image">
                     <img src="${user.avatar_url}">
